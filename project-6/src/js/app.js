@@ -161,11 +161,9 @@ App = {
         switch(processId) {
             case 1:
                 return await App.addRoleToSupplyChainContract(event);
-                //return await App.harvestItem(event);
                 break;
             case 2:
                 return await App.collectMetallItem(event);
-                //return await App.processItem(event);
                 break;
             case 3:
                 return await App.fetchItemBufferPublic(event);
@@ -724,10 +722,10 @@ App = {
         }
 
         App.contracts.SupplyChain.deployed().then(function(instance) {
-        var events = instance.allEvents(function(err, log){
-          if (!err)
-            $("#ftc-events").append('<li>' + log.event + ' - ' + log.transactionHash + '</li>');
-        });
+            var events = instance.allEvents(function(err, log){
+                if (!err)
+                    $("#ftc-events").append('<li>' + log.event + ' - ' + log.transactionHash + '</li>');
+            });
         }).catch(function(err) {
           console.log('Error in fetch events:', err.message);
         });
