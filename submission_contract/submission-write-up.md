@@ -4,17 +4,17 @@ v1.0.0
 ##  Deploy the contract:
 - Contract Transaction Hash
 ```
-0x903906a5d37a33f77fedc5b01d1602071f305c65b81e5a2062a526f63896174f
+0x0464ef7a099f8112f899b27a1e2532647c3b66fbdd3a377ca65959658861ef75
 ```
 ```
-https://rinkeby.etherscan.io/tx/0x903906a5d37a33f77fedc5b01d1602071f305c65b81e5a2062a526f63896174f
+https://rinkeby.etherscan.io/tx/0x0464ef7a099f8112f899b27a1e2532647c3b66fbdd3a377ca65959658861ef75
 ```
 - Contract Address 
 ```
-0x98435aE76764978A2BadD0615bb896D8378Cb954
+0xFfaD8613C55E6444613F613c1adeAa6948F39108
 ```
 ```
-https://rinkeby.etherscan.io/address/0x98435aE76764978A2BadD0615bb896D8378Cb954
+https://rinkeby.etherscan.io/address/0xFfaD8613C55E6444613F613c1adeAa6948F39108
 ```
 ##  Libraries used
 - lite-server (Version 2.4.0): Lightweight development only node server that serves a web app for the client part of the project.

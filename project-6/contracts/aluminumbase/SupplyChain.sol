@@ -133,11 +133,6 @@ contract SupplyChain is Ownable, AluminumProducerRole, DistributorRole, AutoManu
     // Define a function 'kill' if required
     function kill() public onlyOwner {
         selfdestruct(this.owner());
-        /*
-        if (msg.sender == owner) {
-            selfdestruct(owner);
-        }
-        */
     }
 
     // Define a function 'collectItem' that allows a producer to mark an item 'Collected'
