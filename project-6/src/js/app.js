@@ -92,17 +92,7 @@ App = {
             console.log('Connected to Ganache Local Network via Web3 direct instance');
         }
 
-        // Check the network connected and get the ABI path
-        if(await App.isGanacheLocalNetwork()) {
-            console.log('Connected to Ganache Local Network via metamask');
-            App.jsonSupplyChainBuildPath = "../../build/contracts/SupplyChain.json";
-        } else {
-            console.log('Connected to Rinkeby');
-            App.jsonSupplyChainBuildPath = "../../build-rinkeby/contracts/SupplyChain.json";
-        }
-
         App.getMetaskAccountID();
-
         return App.initSupplyChain();
     },
 
@@ -121,39 +111,37 @@ App = {
         })
     },
 
-    isGanacheLocalNetwork: async function () {
+    setAbiJsonObjectFromNetwork: async function () {
         web3 = new Web3(App.web3Provider);
-        await web3.version.getNetwork(function(err, netId) {
+        await web3.version.getNetwork( (err, netId) => {
             if (err) {
                 console.log('Error checking network:',err);
                 return;
             }
             console.log('netID:',netId);
-            if(netId != 4) {
-                //console.log('Ganache network');
-                return true;
+            if(netId == 4) {
+                console.log('Connected to Rinkeby network');
+                App.jsonSupplyChainBuildPath = "../../build-rinkeby/contracts/SupplyChain.json";
             } else {
-                //console.log('Rinkeby network');
-                return false;
+                console.log('Connected to Ganache network');
+                App.jsonSupplyChainBuildPath = "../../build/contracts/SupplyChain.json";
             }
+
+            $.getJSON(App.jsonSupplyChainBuildPath, function(data) {
+                console.log('data',data);
+                var SupplyChainArtifact = data;
+                App.contracts.SupplyChain = TruffleContract(SupplyChainArtifact);
+                App.contracts.SupplyChain.setProvider(App.web3Provider);
+                App.fetchEvents();
+    
+            });
         })
     },
 
     initSupplyChain: async function () {
         /// Source the truffle compiled smart contracts
-        console.log(App.jsonSupplyChainBuildPath);
         /// JSONfy the smart contracts
-        $.getJSON(App.jsonSupplyChainBuildPath, function(data) {
-            console.log('data',data);
-            var SupplyChainArtifact = data;
-            App.contracts.SupplyChain = TruffleContract(SupplyChainArtifact);
-            App.contracts.SupplyChain.setProvider(App.web3Provider);
-            
-            //App.fetchItemBufferOne();
-            //App.fetchItemBufferTwo();
-            App.fetchEvents();
-
-        });
+        await App.setAbiJsonObjectFromNetwork();
 
         return App.bindEvents();
     },
