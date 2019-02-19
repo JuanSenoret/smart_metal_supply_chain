@@ -14,8 +14,8 @@
 
 const HDWalletProvider = require("truffle-hdwallet-provider");
 
-const MNEMONIC = "scatter shrug burger salt keen silly busy pen popular remove hedgehog patch";
-const API_KEY = "23184fecf7ee48acb732c28ca239cfd7";
+const MNEMONIC = "your mnemonic";
+const API_KEY = "YOUR INFURA API KEY";
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
   // to customize your Truffle configuration!
@@ -30,19 +30,8 @@ module.exports = {
             return new HDWalletProvider(MNEMONIC, 'https://rinkeby.infura.io/v3/' + API_KEY)
         },
         network_id: 4,
-        gas: 6997250,
+        gas: 4500000,
         gasPrice: 10000000000
-    }
-  },
-  compilers: {
-    solc: {
-      version: "^0.5.0", // A version or constraint - Ex. "^0.5.0"
-      settings: {
-        optimizer: {
-          enabled: true,
-          runs: 200   // Optimize for how many times you intend to run the code
-        }
-      }
     }
   }
 };

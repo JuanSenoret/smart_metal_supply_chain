@@ -4,11 +4,11 @@ body {
   font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
   color: #212121;
 }
+
 .container {
   width: 80%;
   margin: 0 auto;
 }
-
 
 .bold { 
   font-weight: bolder;
@@ -45,6 +45,7 @@ button {
   padding:20px;
 }
 
+/*
 .form-group {
   background-color:#0097A7;
   color:black;
@@ -53,7 +54,7 @@ button {
   border-radius: 4px;
   background-color: #f8f8f8;
 }
-
+*/
 .form-break {
   background-color:#fff;
   color:white;
@@ -64,3 +65,20 @@ button {
 .horizontal-rule {
   background-color:#BDBDBD;
 }
+/*
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}*/

@@ -1,5 +1,5 @@
 {
-  "name": "supply-chain-E",
+  "name": "smart-metal-supply-chain",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,8 +8,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "pk <pkrasam@gmail.com> (https://ipfs.infura.io/ipfs/QmSXiR9Khm3yo1J67nUopvVBxFJ8YGN2fUGZ34Etr3m92x/)",
+  "author": "pk <juansenoret@gmail.com> ()",
   "license": "MIT",
+  "dependencies": {
+    "truffle-hdwallet-provider": "^1.0.0",
+    "web3": "^1.0.0-beta.46"
+  },
   "devDependencies": {
     "lite-server": "2.4.0"
   }

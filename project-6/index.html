@@ -4,105 +4,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fair Trade Coffee</title>
+    <title>Fair Trade Alloy</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 
 <body>
-    <div class="container">
-        <h1 style="text-align: center;">Fair Trade Coffee</h1>
+    <!--<div class="container">
+        <h1 style="text-align: center;">Fair Trade Alloy</h1>
         <hr>
-        <p style="text-align: center;">Prove the authenticity of coffee using the Ethereum blockchain.</p>
-    </div>
+        <p style="text-align: center;">Prove the authenticity of alloy using the Ethereum blockchain.</p>
+    </div>-->
 
-    <div id="ftc-harvest">
-        <h2>Product Overview</h2>
-        <div class="form-group">
-            SKU
-            <br>
-            <input class="input-field" type="number" id="sku" name="sku" value=1><br>
-            UPC
-            <br>
-            <input type="number" id="upc" name="upc" value=1><br>
-            Current Owner ID
-            <br>
-            <input type="text" id="ownerID" name="ownerID" value="0x963865f57804b38459dd4b2da2f760211a200438" size="50"><br>
-            <div class=button-div>
-                <button class="btn-fetchOne" id="button" type="button" data-id="9">Fetch Data 1</button>
-                <button class="btn-fetchTwo" id="button" type="button" data-id="10">Fetch Data 2</button>
+    <div class="jumbotron text-center">
+        <h1>Fair Trade Alloy</h1>
+        <p>Prove the authenticity of alloy using the Ethereum blockchain.</p> 
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <h2>Admistration Panel</h2>
+                <div class="card bg-light text-dark">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Roles</label>
+                                <div class="col-sm-9">
+                                    <select class="producer-select" id="rolesSelectBox">
+                                        <option value="alloy-producer">Alloy Producer</option>
+                                        <option value="distributor">Distributor</option>
+                                        <option value="auto-manufacturer">Auto Manufacturer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword3" class="col-sm-3 col-form-label">Address</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="roleAccountAddress" name="roleAccountAddress" placeholder="0x963865f57804b38459dd4b2da2f760211a200438" size="50">
+                                </div>
+                            </div>
+                        </form>
+                    </div> 
+                    <div class="card-footer">
+                        <button class="btn-addRole" id="button" type="button" data-id="1">Submit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <h2>Alloy Fetch Data</h2>
+                <div class="card bg-light text-dark">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group row">
+                                <label for="dnaFetchItem" class="col-sm-3 col-form-label">DNA</label>
+                                <div class="col-sm-9">
+                                    <input class="input-field" type="number" id="dnaFetchItem" name="dnaFetchItem" placeholder=1 step="1" pattern="\d+" required>
+                                </div>
+                            </div>
+                            <div class="form-group row table-responsive" id="search-table" style="display:none;">
+								<table class="table">
+									<thead class="thead-light">
+										<tr>
+											<th scope="col">DNA</th>
+											<th scope="col">SKU</th>
+                                            <th scope="col">Price (Eth)</th>
+                                            <th scope="col">State</th>
+											<th scope="col">Owner Id</th>
+											<th scope="col">Producer Id</th>
+											<th scope="col">Producer Name</th>
+                                            <th scope="col">Distributor Id</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td id="result-dna"></td>
+											<td id="result-sku"></td>
+                                            <td id="result-price"></td>
+                                            <td id="result-item-state"></td>
+											<td id="result-owner-id"></td>
+											<td id="result-producer-id"></td>
+											<td id="result-producer-name"></td>
+                                            <td id="result-distributor-id"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+                        </form>
+                    </div> 
+                    <div class="card-footer">
+                        <button class="btn-addRole" id="button" type="button" data-id="3">Fetch Data</button>
+                        <div class="alert alert-danger" id="fetch-data-not-found" role="alert" style="display:none;">Item not found</div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class=form-break></div>
-        <h2>Farm Details</h2>
-        <div class="form-group">
-            Farmer ID
-            <br>
-            <input type="text" id="originFarmerID" name="originFarmerID" value="0x99c289eb2aacec289631a5ddf62cf27a63d4494f"
-                size="50"><br>
-            Farm Name
-            <br>
-            <input type="text" id="originFarmName" name="originFarmName" value="John Doe"><br>
-            Farm Information
-            <br>
-            <input type="text" id="originFarmInformation" name="originFarmInformation" value="Yarra Valley"><br>
-            Farm Latitude
-            <br>
-            <input type="text" id="originFarmLatitude" name="originFarmLatitude" value="-38.239770"><br>
-            Farm Longitude
-            <br>
-            <input type="text" id="originFarmLongitude" name="originFarmLongitude" value="144.341490"><br>
-            <br>
-            <button class="btn-harvest" id="button" type="button" data-id="1">Harvest</button>
-            <button class="btn-process" id="button" type="button" data-id="2">Process</button>
-            <button class="btn-pack" id="button" type="button" data-id="3">Pack</button>
-            <button class="btn-forsale" id="button" type="button" data-id="4">ForSale</button>
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center">Alloy Producer Panel</h2>
+            </div>
         </div>
-        <div class=form-break></div>
-        <h2>Product Details</h2>
-        <div class="form-group">
-            Product Notes
-            <br>
-            <input type="text" id="productNotes" name="productNotes" value="Best beans for Espresso" size="60"><br>
-            Product Price
-            <br>
-            <input type="number" id="productPrice" name="productPrice" value=1>ETH<br>
-            Distributor ID
-            <br>
-            <input type="text" id="distributorID" name="distributorID" value="0xf1b1bcd24dad92303dd9fe78be639f7bcf9c238d"
-                size="50">
-            <br>
-            Retailer ID
-            <br>
-            <input type="text" id="retailerID" name="retailerID" value="0x0fb2bfefd526966c87efa19f6693d50971763fc2"
-                size="50"><br>
-            Distributor ID
-            <br>
-            <input type="text" id="consumerID" name="consumerID" value="0x5d777e9127b28fb119e81a6304278a0a21bef1c4"
-                size="50"><br>
-            <br>
-            <button class="btn-buy" id="button" type="button" data-id="5">Buy</button>
-            <button class="btn-ship" id="button" type="button" data-id="6">Ship</button>
-            <button class="btn-receive" id="button" type="button" data-id="7">Receive</button>
-            <button class="btn-purchase" id="button" type="button" data-id="8">Purchase</button>
+        <div class="row">
+            <div class="col-6">
+                <div class="card bg-light text-dark">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group row">
+                                <label for="dnaCollectItem" class="col-sm-3 col-form-label">DNA</label>
+                                <div class="col-sm-9">
+                                    <input class="input-field" type="number" id="dnaCollectItem" name="dnaCollectItem" placeholder=1 step="1" pattern="\d+">
+                                </div>
+                                <label for="originProducerName" class="col-sm-3 col-form-label">Producer Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="originProducerName" name="originProducerName" placeholder="Aluminium Rheinfelden GmbH">
+                                </div>
+                                <label for="originProducerInformation" class="col-sm-3 col-form-label">Producer Information</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="originProducerInformation" name="originProducerInformation" placeholder="A manufacturer of aluminum cast alloys, located in Rheinfelden, Germany.">
+                                </div>
+                                <label for="originProducerLatitude" class="col-sm-3 col-form-label">Producer Latitude</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="originProducerLatitude" name="originProducerLatitude" placeholder="47.568074">
+                                </div>
+                                <label for="originProducerLongitude" class="col-sm-3 col-form-label">Producer Longitude</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="originProducerLongitude" name="originProducerLongitude" placeholder="7.801999">
+                                </div>
+                                <label for="productNotes" class="col-sm-3 col-form-label">Producer Notes</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="productNotes" name="productNotes" placeholder="Best alloy in Germany">
+                                </div>
+                            </div>
+                        </form>
+                    </div> 
+                    <div class="card-footer">
+                        <button class="btn-addRole" id="button" type="button" data-id="2">Collect Metal</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card bg-light text-dark">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group row">
+                                <label for="dnaProducerChangeState" class="col-sm-3 col-form-label">DNA</label>
+                                <div class="col-sm-9">
+                                    <input class="input-field" type="number" id="dnaProducerChangeState" name="dnaProducerChangeState" placeholder=1 step="1" pattern="\d+"><br>
+                                </div>
+                                <label for="priceProducer" class="col-sm-3 col-form-label">Price</label>
+                                <div class="col-sm-9">
+                                    <input class="input-field" type="number" id="priceProducer" name="priceProducer" placeholder=1 step="any" pattern="\d+"><br>
+                                </div>
+                            </div>
+                        </form>
+                    </div> 
+                    <div class="card-footer">
+                        <button class="btn-process-item" id="button" type="button" data-id="4">Process Alloy</button>
+                        <button class="btn-pack-item" id="button" type="button" data-id="5">Pack Alloy</button>
+                        <button class="btn-sell-item" id="button" type="button" data-id="6">Sell Alloy</button>
+                        <button class="btn-ship-item" id="button" type="button" data-id="8">Ship Alloy</button>
+                        <div class="alert alert-success" id="alert-producer-success" role="alert" style="display:none;"></div>
+                        <div class="alert alert-danger" id="alert-producer-error" role="alert" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class=form-break></div>
-        <hr>
+        <div class="row">
+            <div class="col-6">
+                <h2>Distributor Panel</h2>
+                <div class="card bg-light text-dark">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group row">
+                                <label for="dnaDistributorChangeState" class="col-sm-3 col-form-label">DNA</label>
+                                <div class="col-sm-9">
+                                    <input class="input-field" type="number" id="dnaDistributorChangeState" name="dnaDistributorChangeState" placeholder=1 step="1" pattern="\d+"><br>
+                                </div>
+                                <label for="priceDistributor" class="col-sm-3 col-form-label">Price</label>
+                                <div class="col-sm-9">
+                                    <input class="input-field" type="number" id="priceDistributor" name="priceDistributor" placeholder=1 step="any" pattern="\d+"><br>
+                                </div>
+                            </div>
+                        </form>
+                    </div> 
+                    <div class="card-footer">
+                        <button class="btn-buy-distributor-item" id="button" type="button" data-id="7">Buy</button>
+                        <button class="btn-receive-distributor-item" id="button" type="button" data-id="9">Received</button>
+                        <button class="btn-purchase-distributor-item" id="button" type="button" data-id="10">Purchased</button>
+                        <button class="btn-buy-distributor-item" id="button" type="button" data-id="10">Purchased</button>
+                        <button class="btn-sell-distributor-item" id="button" type="button" data-id="11">Sell</button>
+                        <button class="btn-ship-distributor-item" id="button" type="button" data-id="13">Ship</button>
+                        <div class="alert alert-success" id="alert-distributor-success" role="alert" style="display:none;"></div>
+                        <div class="alert alert-danger" id="alert-distributor-error" role="alert" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <h2>Manufacturer Panel</h2>
+                <div class="card bg-light text-dark">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group row">
+                                <label for="dnaManufacturerChangeState" class="col-sm-3 col-form-label">DNA</label>
+                                <div class="col-sm-9">
+                                    <input class="input-field" type="number" id="dnaManufacturerChangeState" name="dnaManufacturerChangeState" placeholder=1 step="1" pattern="\d+"><br>
+                                </div>
+                                <label for="priceManufacturer" class="col-sm-3 col-form-label">Price</label>
+                                <div class="col-sm-9">
+                                    <input class="input-field" type="number" id="priceManufacturer" name="priceManufacturer" placeholder=1 step="any" pattern="\d+"><br>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn-buy-manufacturer-item" id="button" type="button" data-id="12">Buy</button>
+                        <button class="btn-receive-manufacturer-item" id="button" type="button" data-id="14">Received</button>
+                        <button class="btn-purchase-manufacturer-item" id="button" type="button" data-id="15">Purchased</button>
+                        <div class="alert alert-success" id="alert-manufacturer-success" role="alert" style="display:none;"></div>
+                        <div class="alert alert-danger" id="alert-manufacturer-error" role="alert" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <h2>Transaction History<span id="ftc-history"></span></h2>
+                <div>
+                    <ul id="ftc-events">
+                        <!-- Events will appear here from app.js -->
+                    </ul>
+                    <br>
+                    <hr>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <h2>Transaction History<span id="ftc-history"></span></h2>
-    <div>
-        <ul id="ftc-events">
-            <!-- Events will appear here from app.js -->
-        </ul>
-        <br>
-        <hr>
-    </div>
-
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- <script src="js/web3.min.js"></script> -->
-    <script src="js/truffle-contract.js"></script>
-    <script src="js/app.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="src/js/web3_dist/web3.min.js"></script>
+    <script src="src/js/truffle-contract.js"></script>
+    <script src="src/js/app.js"></script>
 </body>
 
 </html>

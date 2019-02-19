@@ -1,14 +1,17 @@
 // migrating the appropriate contracts
-var FarmerRole = artifacts.require("./FarmerRole.sol");
-var DistributorRole = artifacts.require("./DistributorRole.sol");
-var RetailerRole = artifacts.require("./RetailerRole.sol");
-var ConsumerRole = artifacts.require("./ConsumerRole.sol");
-var SupplyChain = artifacts.require("./SupplyChain.sol");
+//const AluminumProducerRole = artifacts.require("./AluminumProducerRole.sol");
+//const DistributorRole = artifacts.require("./DistributorRole.sol");
+//const AutoManufacturerRole = artifacts.require("./AutoManufacturerRole.sol");
+//const Ownable = artifacts.require("./Ownable.sol");
+//const Roles = artifacts.require("./Roles.sol");
+const SupplyChain = artifacts.require("./SupplyChain.sol");
 
-module.exports = function(deployer) {
-  deployer.deploy(FarmerRole);
-  deployer.deploy(DistributorRole);
-  deployer.deploy(RetailerRole);
-  deployer.deploy(ConsumerRole);
-  deployer.deploy(SupplyChain);
+module.exports = function(deployer, network, accounts) {
+
+  console.log('Network selected to deploy: ' + network);
+    if (network == "rinkeby") {
+        deployer.deploy(SupplyChain,{from: accounts[0]});
+    } else if (network == "development") {
+        deployer.deploy(SupplyChain,{from: accounts[0]});
+    }
 };
