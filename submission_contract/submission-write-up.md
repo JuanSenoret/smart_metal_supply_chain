@@ -2,13 +2,6 @@
 v1.0.0
 
 ##  Deploy the contract:
-- Submit Transaction Hash
-```
-0x903906a5d37a33f77fedc5b01d1602071f305c65b81e5a2062a526f63896174f
-```
-```
-https://rinkeby.etherscan.io/tx/0x903906a5d37a33f77fedc5b01d1602071f305c65b81e5a2062a526f63896174f
-```
 - Contract Transaction Hash
 ```
 0x903906a5d37a33f77fedc5b01d1602071f305c65b81e5a2062a526f63896174f
